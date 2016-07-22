@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" styleClass="ventana" stylesheets="@css/style.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.FrmPrincipalController">
+   <top>
+      <ToolBar prefHeight="40.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+        <items>
+          <Button mnemonicParsing="false" text="Button" />
+        </items>
+      </ToolBar>
+   </top>
+   <bottom>
+      <HBox prefHeight="20.0" prefWidth="600.0" BorderPane.alignment="CENTER">
+         <children>
+            <Label alignment="CENTER_RIGHT" prefHeight="20.0" prefWidth="75.0" text="Username:" textFill="#d90000">
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font>
+               <HBox.margin>
+                  <Insets right="2.0" />
+               </HBox.margin>
+            </Label>
+            <Label fx:id="lblUsername" contentDisplay="CENTER" layoutX="10.0" layoutY="10.0" prefHeight="20.0" prefWidth="250.0" text="username">
+               <HBox.margin>
+                  <Insets right="2.0" />
+               </HBox.margin>
+            </Label>
+            <Label alignment="CENTER_RIGHT" layoutX="10.0" layoutY="10.0" prefHeight="20.0" prefWidth="75.0" text="Sucursal:" textFill="#d90000">
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font>
+               <HBox.margin>
+                  <Insets right="2.0" />
+               </HBox.margin>
+            </Label>
+            <Label fx:id="lblSucursal" contentDisplay="CENTER" layoutX="85.0" layoutY="10.0" prefHeight="20.0" prefWidth="150.0" text="sucursal">
+               <HBox.margin>
+                  <Insets right="2.0" />
+               </HBox.margin>
+            </Label>
+         </children>
+      </HBox>
+   </bottom>
+</BorderPane>
