@@ -6,13 +6,13 @@ public class ItemPrepaga {
     private int idItem;
     private Date fecha;
     private Sucursal sucursal;
-    private int horas;
+    private float horas;
 
     public ItemPrepaga() {
 
     }
 
-    public ItemPrepaga(Date fecha, Sucursal sucursal, int horas) {
+    public ItemPrepaga(Date fecha, Sucursal sucursal, float horas) {
         this.fecha = fecha;
         this.sucursal = sucursal;
         this.horas = horas;
@@ -42,11 +42,11 @@ public class ItemPrepaga {
         this.sucursal = sucursal;
     }
 
-    public int getHoras() {
+    public float getHoras() {
         return horas;
     }
 
-    public void setHoras(int horas) {
+    public void setHoras(float horas) {
         this.horas = horas;
     }
 }

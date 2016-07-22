@@ -39,9 +39,19 @@ public abstract class Cliente {
         this.prepagas = prepagas;
     }
 
-    public void agregarPrepaga(int nroPrepaga, Date fecha, Sucursal sucursal, int horas) {
+    public void agregarPrepaga(int nroPrepaga, Date fecha, Sucursal sucursal, float horas) {
         Prepaga prepaga = new Prepaga(nroPrepaga, fecha, sucursal, horas);
 
         prepagas.add(prepaga);
+    }
+
+    public Prepaga buscarPrepaga(int nroPrepaga) {
+        for (Prepaga pre: prepagas) {
+            if (pre.getNroPrepaga() == nroPrepaga) {
+                return pre;
+            }
+        }
+
+        return null;
     }
 }

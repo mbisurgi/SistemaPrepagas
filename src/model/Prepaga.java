@@ -8,7 +8,7 @@ public class Prepaga {
     private int nroPrepaga;
     private Date fecha;
     private Sucursal sucursal;
-    private int horas;
+    private float horas;
     private List<ItemPrepaga> items;
     private boolean habilitada;
 
@@ -16,7 +16,7 @@ public class Prepaga {
 
     }
 
-    public Prepaga(int nroPrepaga, Date fecha, Sucursal sucursal, int horas) {
+    public Prepaga(int nroPrepaga, Date fecha, Sucursal sucursal, float horas) {
         this.nroPrepaga = nroPrepaga;
         this.fecha = fecha;
         this.sucursal = sucursal;
@@ -25,7 +25,7 @@ public class Prepaga {
         this.habilitada = true;
     }
 
-    public Prepaga(int nroPrepaga, Date fecha, Sucursal sucursal, int horas, boolean habilitada) {
+    public Prepaga(int nroPrepaga, Date fecha, Sucursal sucursal, float horas, boolean habilitada) {
         this.nroPrepaga = nroPrepaga;
         this.fecha = fecha;
         this.sucursal = sucursal;
@@ -58,11 +58,11 @@ public class Prepaga {
         this.sucursal = sucursal;
     }
 
-    public int getHoras() {
+    public float getHoras() {
         return horas;
     }
 
-    public void setHoras(int horas) {
+    public void setHoras(float horas) {
         this.horas = horas;
     }
 
@@ -82,8 +82,8 @@ public class Prepaga {
         this.habilitada = habilitada;
     }
 
-    public int horasDisponibles() {
-        int horasConsumidas = 0;
+    public float horasDisponibles() {
+        float horasConsumidas = 0;
 
         for (ItemPrepaga item: items) {
             horasConsumidas = horasConsumidas + item.getHoras();
@@ -92,7 +92,7 @@ public class Prepaga {
         return  horas - horasConsumidas;
     }
 
-    public void agregarItem(Date fecha, Sucursal sucursal, int horas) {
+    public void agregarItem(Date fecha, Sucursal sucursal, float horas) {
         ItemPrepaga item = new ItemPrepaga(fecha, sucursal, horas);
 
         items.add(item);

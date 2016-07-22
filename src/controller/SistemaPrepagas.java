@@ -2,6 +2,7 @@ package controller;
 
 import model.*;
 
+import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -66,10 +67,54 @@ public class SistemaPrepagas {
         return usuarioLogueado.getUsuarioView();
     }
 
+    public void ingresarPrepaga(String identificacion, Date fecha, int idSucursal, float horas) {
+        int nroPrepaga = (int)Math.random() * 999999 + 100000;
+
+        Cliente cli = buscarCliente(identificacion);
+        Sucursal suc = usuarioLogueado.getSucursal();
+
+        if (cli != null) {
+            cli.agregarPrepaga(nroPrepaga, fecha, suc, horas);
+        }
+    }
+
+    public void ingresarItemPrepaga(String identificacion, int nroPrepaga, Date fecha, int idSucursal, float horas) {
+        Cliente cli = buscarCliente(identificacion);
+        Sucursal suc = usuarioLogueado.getSucursal();
+
+        if (cli != null) {
+            Prepaga pre = cli.buscarPrepaga(nroPrepaga);
+
+            if (pre != null) {
+                pre.agregarItem(fecha, suc, horas);
+            }
+        }
+    }
+
     private Usuario buscarUsuario(String username) {
         for (Usuario usu: usuarios) {
             if (usu.getEmail().equals(username)) {
                 return usu;
+            }
+        }
+
+        return null;
+    }
+
+    private Cliente buscarCliente(String identificacion) {
+        for (Cliente cli: clientes) {
+            if (cli.getIdentificacion().equals(identificacion)) {
+                return cli;
+            }
+        }
+
+        return null;
+    }
+
+    private Sucursal buscarSucursal(int idSucursal) {
+        for (Sucursal suc: sucursales) {
+            if (suc.getIdSucursal() == idSucursal) {
+                return suc;
             }
         }
 
