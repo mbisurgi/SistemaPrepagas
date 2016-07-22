@@ -11,7 +11,8 @@
    <top>
       <ToolBar prefHeight="40.0" prefWidth="200.0" BorderPane.alignment="CENTER">
         <items>
-          <Button mnemonicParsing="false" text="Button" />
+          <Button fx:id="btnClientes" mnemonicParsing="false" onAction="#btnClientesOnClicked" prefHeight="27.0" prefWidth="100.0" text="Clientes" />
+            <Button fx:id="btnPrepagas" layoutX="10.0" layoutY="11.0" mnemonicParsing="false" onAction="#btnPrepagasOnClicked" prefHeight="27.0" prefWidth="100.0" text="Prepagas" />
         </items>
       </ToolBar>
    </top>

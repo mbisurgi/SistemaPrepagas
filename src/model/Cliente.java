@@ -45,6 +45,8 @@ public abstract class Cliente {
         prepagas.add(prepaga);
     }
 
+    public abstract ClienteView getClienteView();
+
     public Prepaga buscarPrepaga(int nroPrepaga) {
         for (Prepaga pre: prepagas) {
             if (pre.getNroPrepaga() == nroPrepaga) {

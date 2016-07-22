@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="550.0" styleClass="ventana" stylesheets="@css/style.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <bottom>
+      <ToolBar prefHeight="40.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+        <items>
+          <Button mnemonicParsing="false" prefHeight="27.0" prefWidth="60.0" text="Nuevo" />
+            <Button layoutX="10.0" layoutY="11.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="60.0" text="Editar" />
+        </items>
+      </ToolBar>
+   </bottom>
+   <top>
+      <VBox prefHeight="75.0" prefWidth="550.0" BorderPane.alignment="CENTER">
+         <children>
+            <Label prefHeight="17.0" prefWidth="576.0" text="Clientes" textFill="#d90000">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+         </children>
+      </VBox>
+   </top>
+   <center>
+      <TableView prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+        <columns>
+          <TableColumn prefWidth="108.0" text="Identificacion" />
+          <TableColumn prefWidth="245.0" text="Cliente" />
+            <TableColumn prefWidth="200.0" text="Email" />
+        </columns>
+      </TableView>
+   </center>
+</BorderPane>
