@@ -1,6 +1,9 @@
 package view;
 
 
+import controller.SistemaPrepagas;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -11,15 +14,17 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import model.ClienteView;
+import observer.IObserver;
 
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class FrmClientesController implements Initializable {
+public class FrmClientesController implements Initializable, IObserver {
     @FXML
     TableView<ClienteView> tblClientes;
     @FXML
@@ -33,10 +38,22 @@ public class FrmClientesController implements Initializable {
     @FXML
     Button btnEditar;
 
+    private ObservableList<ClienteView> clientes;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        SistemaPrepagas.getInstancia().addObserver(this);
 
+        clientes = FXCollections.observableArrayList();
+        configurarTableViewCliente();
+    }
+
+    private void configurarTableViewCliente() {
+        colIdentificacion.setCellValueFactory(new PropertyValueFactory<ClienteView, String>("identificacion"));
+        colCliente.setCellValueFactory(new PropertyValueFactory<ClienteView, String>("cliente"));
+        colEmail.setCellValueFactory(new PropertyValueFactory<ClienteView, String>("email"));
+
+        tblClientes.setItems(clientes);
     }
 
     @FXML
@@ -57,5 +74,11 @@ public class FrmClientesController implements Initializable {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    @Override
+    public void update() {
+        clientes.clear();
+        clientes.addAll(SistemaPrepagas.getInstancia().listarClientes());
     }
 }

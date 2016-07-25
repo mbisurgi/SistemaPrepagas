@@ -1,12 +1,13 @@
 package controller;
 
 import model.*;
+import observer.Observable;
 
 import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
 
-public class SistemaPrepagas {
+public class SistemaPrepagas extends Observable {
     private static SistemaPrepagas instancia = null;
 
     private List<Usuario> usuarios;
@@ -73,6 +74,7 @@ public class SistemaPrepagas {
         if (cli == null) {
             cli = new ClientePersona(dni, email, nombre, apellido);
             clientes.add(cli);
+            notifyObservers();
         }
     }
 
@@ -82,6 +84,7 @@ public class SistemaPrepagas {
         if (cli == null) {
             cli = new ClienteEmpresa(cuit, email, razonSocial);
             clientes.add(cli);
+            notifyObservers();
         }
     }
 
@@ -107,6 +110,16 @@ public class SistemaPrepagas {
                 pre.agregarItem(fecha, suc, horas);
             }
         }
+    }
+
+    public List<ClienteView> listarClientes() {
+        List<ClienteView> listado = new ArrayList<>();
+
+        for (Cliente cli: clientes) {
+            listado.add(cli.getClienteView());
+        }
+
+        return listado;
     }
 
     private Usuario buscarUsuario(String username) {
