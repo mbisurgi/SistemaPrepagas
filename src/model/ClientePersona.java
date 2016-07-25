@@ -30,4 +30,8 @@ public class ClientePersona extends Cliente {
     public ClienteView getClienteView() {
         return new ClienteView(identificacion, nombre + ", " + apellido, email);
     }
+
+    public ClientePersonaView getClientePersonaView() {
+        return new ClientePersonaView(identificacion, nombre, apellido, email);
+    }
 }

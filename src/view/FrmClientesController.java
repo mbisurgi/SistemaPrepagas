@@ -61,6 +61,18 @@ public class FrmClientesController implements Initializable, IObserver {
         loadFrmClientesEdicion(event);
     }
 
+    @FXML
+    private void btnEditarOnMouseClicked(Event event) {
+        ClienteView cli = tblClientes.getSelectionModel().getSelectedItem();
+
+        if (cli != null) {
+            System.out.println(cli.getIdentificacion());
+        } else {
+            System.out.println("Seleccione un cliente para editar.");
+        }
+    }
+
+
     private void loadFrmClientesEdicion(Event event) {
         try {
             Parent parent = FXMLLoader.load(getClass().getResource("FrmClientesEdicion.fxml"));

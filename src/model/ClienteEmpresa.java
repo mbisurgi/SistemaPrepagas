@@ -20,4 +20,8 @@ public class ClienteEmpresa extends Cliente {
     public ClienteView getClienteView() {
         return new ClienteView(identificacion, razonSocial, email);
     }
+
+    public ClienteEmpresaView getClienteEmpresaView() {
+        return new ClienteEmpresaView(identificacion, razonSocial, email);
+    }
 }

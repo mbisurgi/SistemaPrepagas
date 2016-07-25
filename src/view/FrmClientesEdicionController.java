@@ -7,6 +7,8 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
+import model.ClienteEmpresaView;
+import model.ClientePersonaView;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -36,8 +38,8 @@ public class FrmClientesEdicionController implements Initializable {
     Button btnCancelar;
 
     ToggleGroup tgEntidad;
-
-
+    ClientePersonaView persona = null;
+    ClienteEmpresaView empresa = null;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -45,6 +47,10 @@ public class FrmClientesEdicionController implements Initializable {
 
         rbPersona.setToggleGroup(tgEntidad);
         rbEmpresa.setToggleGroup(tgEntidad);
+    }
+
+    public void cargarCliente(String identificacion) {
+
     }
 
     @FXML
