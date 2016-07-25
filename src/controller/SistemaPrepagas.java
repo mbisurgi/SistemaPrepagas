@@ -67,6 +67,24 @@ public class SistemaPrepagas {
         return usuarioLogueado.getUsuarioView();
     }
 
+    public void ingresarClientePersona(String dni, String nombre, String apellido, String email) {
+        ClientePersona cli = (ClientePersona)buscarCliente(dni);
+
+        if (cli == null) {
+            cli = new ClientePersona(dni, email, nombre, apellido);
+            clientes.add(cli);
+        }
+    }
+
+    public void ingresarClienteEmpresa(String cuit, String razonSocial, String email) {
+        ClienteEmpresa cli = (ClienteEmpresa)buscarCliente(cuit);
+
+        if (cli == null) {
+            cli = new ClienteEmpresa(cuit, email, razonSocial);
+            clientes.add(cli);
+        }
+    }
+
     public void ingresarPrepaga(String identificacion, Date fecha, int idSucursal, float horas) {
         int nroPrepaga = (int)Math.random() * 999999 + 100000;
 
