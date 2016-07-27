@@ -22,18 +22,34 @@
       <ColumnConstraints minWidth="10.0" prefWidth="250.0" />
    </columnConstraints>
    <children>
-      <Label alignment="CENTER_RIGHT" prefHeight="17.0" prefWidth="118.0" text="Username" textFill="#d90000" GridPane.rowIndex="1" />
-      <Label alignment="CENTER_RIGHT" prefHeight="17.0" prefWidth="119.0" text="Password" textFill="#d90000" GridPane.rowIndex="2" />
-      <Label prefHeight="17.0" prefWidth="299.0" text="URBAN STATION - PREPAGAS" textFill="#d20000" GridPane.columnIndex="1">
+      <Label alignment="CENTER_RIGHT" prefHeight="17.0" prefWidth="118.0" text="Username" textFill="#d90000" GridPane.rowIndex="1" >
          <font>
-            <Font name="System Bold" size="13.0" />
+            <Font name="Gill Sans" size="13.0" />
          </font>
       </Label>
-      <TextField fx:id="txtUsername" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-      <PasswordField fx:id="txtPassword" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-      <Button fx:id="btnLogin" mnemonicParsing="false" onAction="#btnLoginOnClicked" text="Login" textFill="#d90000" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="3">
+      <Label alignment="CENTER_RIGHT" prefHeight="17.0" prefWidth="119.0" text="Password" textFill="#d90000" GridPane.rowIndex="2" >
          <font>
-            <Font size="12.0" />
+            <Font name="Gill Sans" size="13.0" />
+         </font>
+      </Label>
+      <Label prefHeight="17.0" prefWidth="299.0" text="URBAN STATION - PREPAGAS" textFill="#d20000" GridPane.columnIndex="1">
+         <font>
+            <Font name="Gill Sans Bold" size="13.0" />
+         </font>
+      </Label>
+      <TextField fx:id="txtUsername" GridPane.columnIndex="1" GridPane.rowIndex="1" >
+         <font>
+            <Font name="Gill Sans" size="13.0" />
+         </font>
+      </TextField>
+      <PasswordField fx:id="txtPassword" GridPane.columnIndex="1" GridPane.rowIndex="2" >
+         <font>
+            <Font name="Gill Sans" size="13.0" />
+         </font>
+      </PasswordField>
+      <Button fx:id="btnLogin" mnemonicParsing="false" onAction="#btnLoginOnMouseClicked" text="Login" textFill="#d90000" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="3">
+         <font>
+            <Font name="Gill Sans" size="12.0" />
          </font>
       </Button>
    </children>

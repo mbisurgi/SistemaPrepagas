@@ -28,7 +28,7 @@ public class ClientePersona extends Cliente {
 
     @Override
     public ClienteView getClienteView() {
-        return new ClienteView(identificacion, nombre + ", " + apellido, email);
+        return new ClienteView(identificacion, nombre + " " + apellido, email);
     }
 
     public ClientePersonaView getClientePersonaView() {

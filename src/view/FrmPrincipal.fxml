@@ -6,13 +6,18 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" styleClass="ventana" stylesheets="@css/style.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.FrmPrincipalController">
    <top>
       <ToolBar prefHeight="40.0" prefWidth="200.0" BorderPane.alignment="CENTER">
         <items>
-          <Button fx:id="btnClientes" mnemonicParsing="false" onAction="#btnClientesOnClicked" prefHeight="27.0" prefWidth="100.0" text="Clientes" />
-            <Button fx:id="btnPrepagas" layoutX="10.0" layoutY="11.0" mnemonicParsing="false" onAction="#btnPrepagasOnClicked" prefHeight="27.0" prefWidth="100.0" text="Prepagas" />
+          <Button fx:id="btnClientes" mnemonicParsing="false" onAction="#btnClientesOnClicked" prefHeight="27.0" prefWidth="100.0" text="Clientes">
+               <font>
+                  <Font name="Gill Sans" size="13.0" />
+               </font></Button>
+            <Button fx:id="btnPrepagas" layoutX="10.0" layoutY="11.0" mnemonicParsing="false" onAction="#btnPrepagasOnClicked" prefHeight="27.0" prefWidth="100.0" text="Prepagas">
+               <font>
+                  <Font name="Gill Sans" size="13.0" />
+               </font></Button>
         </items>
       </ToolBar>
    </top>
@@ -21,7 +26,7 @@
          <children>
             <Label alignment="CENTER_RIGHT" prefHeight="20.0" prefWidth="75.0" text="Username:" textFill="#d90000">
                <font>
-                  <Font name="System Bold" size="13.0" />
+                  <Font name="Gill Sans Bold" size="13.0" />
                </font>
                <HBox.margin>
                   <Insets right="2.0" />
@@ -31,10 +36,13 @@
                <HBox.margin>
                   <Insets right="2.0" />
                </HBox.margin>
+               <font>
+                  <Font name="Gill Sans" size="13.0" />
+               </font>
             </Label>
             <Label alignment="CENTER_RIGHT" layoutX="10.0" layoutY="10.0" prefHeight="20.0" prefWidth="75.0" text="Sucursal:" textFill="#d90000">
                <font>
-                  <Font name="System Bold" size="13.0" />
+                  <Font name="Gill Sans Bold" size="13.0" />
                </font>
                <HBox.margin>
                   <Insets right="2.0" />
@@ -44,6 +52,9 @@
                <HBox.margin>
                   <Insets right="2.0" />
                </HBox.margin>
+               <font>
+                  <Font name="Gill Sans" size="13.0" />
+               </font>
             </Label>
          </children>
       </HBox>

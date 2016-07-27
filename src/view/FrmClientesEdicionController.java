@@ -7,8 +7,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
-import model.ClienteEmpresaView;
-import model.ClientePersonaView;
+import model.*;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -37,9 +36,8 @@ public class FrmClientesEdicionController implements Initializable {
     @FXML
     Button btnCancelar;
 
-    ToggleGroup tgEntidad;
-    ClientePersonaView persona = null;
-    ClienteEmpresaView empresa = null;
+    private ToggleGroup tgEntidad;
+    private Cliente cliente = null;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -50,7 +48,55 @@ public class FrmClientesEdicionController implements Initializable {
     }
 
     public void cargarCliente(String identificacion) {
+        cliente = SistemaPrepagas.getInstancia().getCliente(identificacion);
 
+        if (cliente != null) {
+            if (cliente.getClass() == ClientePersona.class) {
+                ClientePersonaView personaView = ((ClientePersona)cliente).getClientePersonaView();
+
+                rbPersona.setSelected(true);
+                rbPersona.setDisable(true);
+                rbEmpresa.setDisable(true);
+                txtIdentificacion.setDisable(true);
+                txtIdentificacion.setText(personaView.getIdentificacion());
+                txtNombre.setText(personaView.getNombre());
+                txtApellido.setText(personaView.getApellido());
+                txtEmail.setText(personaView.getEmail());
+
+                lblIdentificacion.setText("DNI:");
+                lblIdentificacion.setVisible(true);
+                lblNombre.setText("Nombre:");
+                lblNombre.setVisible(true);
+                lblApellido.setText("Apellido:");
+                lblApellido.setVisible(true);
+                txtIdentificacion.setVisible(true);
+                txtNombre.setVisible(true);
+                txtApellido.setVisible(true);
+                txtEmail.setDisable(false);
+            }
+
+            if (cliente.getClass() == ClienteEmpresa.class) {
+                ClienteEmpresaView empresaView = ((ClienteEmpresa)cliente).getClienteEmpresaView();
+
+                rbEmpresa.setSelected(true);
+                rbEmpresa.setDisable(true);
+                rbPersona.setDisable(true);
+                txtIdentificacion.setDisable(true);
+                txtIdentificacion.setText(empresaView.getIdentificacion());
+                txtNombre.setText(empresaView.getRazonSocial());
+                txtEmail.setText(empresaView.getEmail());
+
+                lblIdentificacion.setText("CUIT:");
+                lblIdentificacion.setVisible(true);
+                lblNombre.setText("Razon Social:");
+                lblNombre.setVisible(true);
+                lblApellido.setVisible(false);
+                txtIdentificacion.setVisible(true);
+                txtNombre.setVisible(true);
+                txtApellido.setVisible(false);
+                txtEmail.setDisable(false);
+            }
+        }
     }
 
     @FXML
@@ -134,11 +180,19 @@ public class FrmClientesEdicionController implements Initializable {
         }
 
         if (rbPersona.isSelected()) {
-            SistemaPrepagas.getInstancia().ingresarClientePersona(txtIdentificacion.getText(), txtNombre.getText(), txtApellido.getText(), txtEmail.getText());
+            if (cliente == null) {
+                SistemaPrepagas.getInstancia().ingresarClientePersona(txtIdentificacion.getText(), txtNombre.getText(), txtApellido.getText(), txtEmail.getText());
+            } else {
+                SistemaPrepagas.getInstancia().actualizarClientePersona(txtIdentificacion.getText(), txtNombre.getText(), txtApellido.getText(), txtEmail.getText());
+            }
         }
 
         if (rbEmpresa.isSelected()) {
-            SistemaPrepagas.getInstancia().ingresarClienteEmpresa(txtIdentificacion.getText(), txtNombre.getText(), txtEmail.getText());
+            if (cliente == null) {
+                SistemaPrepagas.getInstancia().ingresarClienteEmpresa(txtIdentificacion.getText(), txtNombre.getText(), txtEmail.getText());
+            } else {
+                SistemaPrepagas.getInstancia().actualizarClienteEmpresa(txtIdentificacion.getText(), txtNombre.getText(), txtEmail.getText());
+            }
         }
 
         Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();

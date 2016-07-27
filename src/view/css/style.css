@@ -5,3 +5,12 @@
 .boton {
 
 }
+
+.table-view {
+    -fx-font-family: "Gill Sans";
+}
+
+.table-view .column-header-background .label {
+    -fx-font-family: "Gill Sans";
+    -fx-text-fill: #d90000;
+}

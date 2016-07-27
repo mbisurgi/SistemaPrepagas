@@ -58,7 +58,7 @@ public class FrmClientesController implements Initializable, IObserver {
 
     @FXML
     private void btnNuevoOnMouseClicked(Event event) {
-        loadFrmClientesEdicion(event);
+        loadFrmClientesEdicionNuevo(event);
     }
 
     @FXML
@@ -66,16 +66,36 @@ public class FrmClientesController implements Initializable, IObserver {
         ClienteView cli = tblClientes.getSelectionModel().getSelectedItem();
 
         if (cli != null) {
-            System.out.println(cli.getIdentificacion());
+            loadFrmClientesEdicionEditar(event);
         } else {
             System.out.println("Seleccione un cliente para editar.");
         }
     }
 
 
-    private void loadFrmClientesEdicion(Event event) {
+    private void loadFrmClientesEdicionNuevo(Event event) {
         try {
             Parent parent = FXMLLoader.load(getClass().getResource("FrmClientesEdicion.fxml"));
+            Stage stage = new Stage();
+            //stage.setTitle("Movimientos");
+            stage.setScene(new Scene(parent, 390, 245));
+            stage.initModality(Modality.WINDOW_MODAL);
+            stage.initOwner(((Node)event.getSource()).getScene().getWindow());
+            stage.show();
+            stage.setResizable(false);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void loadFrmClientesEdicionEditar(Event event) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("FrmClientesEdicion.fxml"));
+            Parent parent = loader.load();
+            FrmClientesEdicionController controller = loader.<FrmClientesEdicionController>getController();
+            controller.cargarCliente(tblClientes.getSelectionModel().getSelectedItem().getIdentificacion());
+            //Parent parent = FXMLLoader.load(getClass().getResource("FrmClientesEdicion.fxml"));
+
             Stage stage = new Stage();
             //stage.setTitle("Movimientos");
             stage.setScene(new Scene(parent, 390, 245));

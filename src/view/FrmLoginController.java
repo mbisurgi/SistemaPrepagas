@@ -31,7 +31,7 @@ public class FrmLoginController implements Initializable{
     }
 
     @FXML
-    private void btnLoginOnClicked(Event event) {
+    private void btnLoginOnMouseClicked(Event event) {
         boolean login, habilitado;
 
         login = SistemaPrepagas.getInstancia().login(txtUsername.getText(), txtPassword.getText());
@@ -56,9 +56,10 @@ public class FrmLoginController implements Initializable{
             Parent parent = FXMLLoader.load(getClass().getResource("FrmPrincipal.fxml"));
             Stage stage = new Stage();
             //stage.setTitle("Movimientos");
-            stage.setScene(new Scene(parent, 900, 400));
+            stage.setScene(new Scene(parent, 900, 600));
             stage.show();
-            stage.setResizable(false);
+            //stage.setResizable(false);
+            stage.setMaximized(true);
         } catch (IOException e) {
             e.printStackTrace();
         }

@@ -88,6 +88,27 @@ public class SistemaPrepagas extends Observable {
         }
     }
 
+    public void actualizarClientePersona(String dni, String nombre, String apellido, String email) {
+        ClientePersona cli = (ClientePersona)buscarCliente(dni);
+
+        if (cli != null) {
+            cli.setNombre(nombre);
+            cli.setApellido(apellido);
+            cli.setEmail(email);
+            notifyObservers();
+        }
+    }
+
+    public void actualizarClienteEmpresa(String cuit, String razonSocial, String email) {
+        ClienteEmpresa cli = (ClienteEmpresa)buscarCliente(cuit);
+
+        if (cli != null) {
+            cli.setRazonSocial(razonSocial);
+            cli.setEmail(email);
+            notifyObservers();
+        }
+    }
+
     public void ingresarPrepaga(String identificacion, Date fecha, int idSucursal, float horas) {
         int nroPrepaga = (int)Math.random() * 999999 + 100000;
 
@@ -110,6 +131,10 @@ public class SistemaPrepagas extends Observable {
                 pre.agregarItem(fecha, suc, horas);
             }
         }
+    }
+
+    public Cliente getCliente(String identificacion) {
+        return buscarCliente(identificacion);
     }
 
     public List<ClienteView> listarClientes() {
