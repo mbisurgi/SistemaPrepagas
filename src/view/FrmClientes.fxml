@@ -10,15 +10,20 @@
    <bottom>
       <ToolBar prefHeight="40.0" prefWidth="200.0" BorderPane.alignment="CENTER">
         <items>
-          <Button fx:id="btnNuevo" mnemonicParsing="false" onAction="#btnNuevoOnMouseClicked" prefHeight="27.0" prefWidth="60.0" text="Nuevo" >
+          <Button fx:id="btnNuevo" mnemonicParsing="false" onAction="#btnNuevoOnMouseClicked" prefHeight="27.0" prefWidth="70.0" text="Nuevo">
               <font>
                   <Font name="Gill Sans" size="13.0" />
               </font>
           </Button>
-            <Button fx:id="btnEditar" layoutX="10.0" layoutY="11.0" mnemonicParsing="false" onAction="#btnEditarOnMouseClicked" prefHeight="27.0" prefWidth="60.0" text="Editar" >
+            <Button fx:id="btnEditar" layoutX="10.0" layoutY="11.0" mnemonicParsing="false" onAction="#btnEditarOnMouseClicked" prefHeight="27.0" prefWidth="70.0" text="Editar">
                 <font>
                     <Font name="Gill Sans" size="13.0" />
                 </font>
+            </Button>
+            <Button fx:id="btnPrepagas" layoutX="74.0" layoutY="11.0" mnemonicParsing="false" onAction="#btnPrepagasOnMouseClicked" prefHeight="27.0" prefWidth="70.0" text="Prepagas">
+               <font>
+                  <Font name="Gill Sans" size="13.0" />
+               </font>
             </Button>
         </items>
       </ToolBar>

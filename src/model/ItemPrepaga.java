@@ -49,4 +49,8 @@ public class ItemPrepaga {
     public void setHoras(float horas) {
         this.horas = horas;
     }
+
+    public ItemPrepagaView getItemPrepagaView() {
+        return new ItemPrepagaView(idItem, fecha.toString(), sucursal.getNombreSucursal(), horas);
+    }
 }

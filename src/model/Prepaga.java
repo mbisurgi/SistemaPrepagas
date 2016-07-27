@@ -97,4 +97,8 @@ public class Prepaga {
 
         items.add(item);
     }
+
+    public PrepagaView getPrepagaView() {
+        return new PrepagaView(nroPrepaga, fecha.toString(), sucursal.getNombreSucursal(), horas, horasDisponibles());
+    }
 }

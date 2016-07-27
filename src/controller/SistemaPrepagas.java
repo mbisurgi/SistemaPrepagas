@@ -4,7 +4,9 @@ import model.*;
 import observer.Observable;
 
 import java.sql.Date;
+import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 public class SistemaPrepagas extends Observable {
@@ -37,6 +39,17 @@ public class SistemaPrepagas extends Observable {
 
         Usuario usu1 = new Usuario("central-ar@enjoyurbanstation.com", "maximati", suc1);
         usuarios.add(usu1);
+
+        ClientePersona cli1 = new ClientePersona("33899255", "mbisurgi@bc-group.com.ar", "Maximiliano", "Bisurgi");
+        clientes.add(cli1);
+
+        Prepaga pre1 = new Prepaga(123456, Date.valueOf(LocalDate.now()), suc1, 20);
+        Prepaga pre2 = new Prepaga(654321, Date.valueOf(LocalDate.now()), suc1, 10);
+        cli1.getPrepagas().add(pre1);
+        cli1.getPrepagas().add(pre2);
+
+        pre1.agregarItem(Date.valueOf(LocalDate.now()), suc1, 2);
+        pre1.agregarItem(Date.valueOf(LocalDate.now()), suc1, 3);
     }
 
     public boolean login(String username, String password) {
@@ -142,6 +155,41 @@ public class SistemaPrepagas extends Observable {
 
         for (Cliente cli: clientes) {
             listado.add(cli.getClienteView());
+        }
+
+        return listado;
+    }
+
+    public List<PrepagaView> listarPrepagasCliente(String identificacion) {
+        List<PrepagaView> listado = new ArrayList<>();
+        Cliente cli = buscarCliente(identificacion);
+
+        if (cli != null) {
+            for (Prepaga pre: cli.getPrepagas()) {
+                listado.add(pre.getPrepagaView());
+            }
+        }
+
+        return listado;
+    }
+
+    public List<ItemPrepagaView> listarItemsPrepaga(String identificacion, int nroPrepaga) {
+        List<ItemPrepagaView> listado = new ArrayList<>();
+        Cliente cli = buscarCliente(identificacion);
+
+        if (cli != null) {
+            Prepaga prepaga = null;
+
+            for (Prepaga pre: cli.getPrepagas()) {
+                if (pre.getNroPrepaga() == nroPrepaga) {
+                    prepaga = pre;
+                    break;
+                }
+            }
+
+            for (ItemPrepaga item: prepaga.getItems()) {
+                listado.add(item.getItemPrepagaView());
+            }
         }
 
         return listado;

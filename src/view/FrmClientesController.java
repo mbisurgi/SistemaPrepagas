@@ -37,6 +37,8 @@ public class FrmClientesController implements Initializable, IObserver {
     Button btnNuevo;
     @FXML
     Button btnEditar;
+    @FXML
+    Button btnPrepagas;
 
     private ObservableList<ClienteView> clientes;
 
@@ -54,6 +56,7 @@ public class FrmClientesController implements Initializable, IObserver {
         colEmail.setCellValueFactory(new PropertyValueFactory<ClienteView, String>("email"));
 
         tblClientes.setItems(clientes);
+        clientes.addAll(SistemaPrepagas.getInstancia().listarClientes());
     }
 
     @FXML
@@ -72,6 +75,16 @@ public class FrmClientesController implements Initializable, IObserver {
         }
     }
 
+    @FXML
+    private void btnPrepagasOnMouseClicked(Event event) {
+        ClienteView cli = tblClientes.getSelectionModel().getSelectedItem();
+
+        if (cli != null) {
+            loadFrmPrepagasCliente(event);
+        } else {
+            System.out.println("Seleccione un cliente para editar.");
+        }
+    }
 
     private void loadFrmClientesEdicionNuevo(Event event) {
         try {
@@ -99,6 +112,26 @@ public class FrmClientesController implements Initializable, IObserver {
             Stage stage = new Stage();
             //stage.setTitle("Movimientos");
             stage.setScene(new Scene(parent, 390, 245));
+            stage.initModality(Modality.WINDOW_MODAL);
+            stage.initOwner(((Node)event.getSource()).getScene().getWindow());
+            stage.show();
+            stage.setResizable(false);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void loadFrmPrepagasCliente(Event event) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("FrmPrepagasCliente.fxml"));
+            Parent parent = loader.load();
+            FrmPrepagasClienteController controller = loader.<FrmPrepagasClienteController>getController();
+            controller.cargarCliente(tblClientes.getSelectionModel().getSelectedItem().getIdentificacion());
+            //Parent parent = FXMLLoader.load(getClass().getResource("FrmClientesEdicion.fxml"));
+
+            Stage stage = new Stage();
+            //stage.setTitle("Movimientos");
+            stage.setScene(new Scene(parent, 550, 500));
             stage.initModality(Modality.WINDOW_MODAL);
             stage.initOwner(((Node)event.getSource()).getScene().getWindow());
             stage.show();
